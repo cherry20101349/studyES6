@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 加载规则
+         */
+        /*
+         * 浏览器加载ES6模块，也是使用<script>标签，但是要加入type="module"属性。
+         *
+         * 浏览器对于带有type="module"的<script>，都是异步加载，不会造成堵塞浏览器，即等到整个页面渲染完，再执行模块脚本，等同于打开了<script>标签的defer属性
+         */
+
+        /**
+         * 对于外部模块脚本，需注意的点
+         */
+        /*
+         * 1，代码是在模块作用域之中运行，而不是在全局作用域运行。模块内部的顶层变量，外部不可见。
+         * 2，模块脚本自动才去严格模式，不管有没有声明use strict。
+         * 3，模块之中，可以使用import命令加载其他模块（.js后缀不可省略，需要提供绝对URL和相对URL），也可以使用export命令输出对外接口。
+         * 4，模块之中，顶层的this关键字返回undefined，而不是指向window。也就是说，在模块顶层使用this关键字，是无意义的。
+         * 5，同一个模块如果加载多次，将只执行一次。
+         */
+    </script>
+    <script>
+        // 实例  下面是一个示例模块
+        import utils from 'https://example.com/js/utils.js';
+        const x = 1;
+        console.log(x === window.x); //false
+        console.log(this === undefined); // true
+
+        // 利用顶层的this等于undefined这个语法点，可以侦测当前代码是否在 ES6 模块之中。
+        const isNotModuleScript = this !== undefined;
+    </script>
+</head>
+<body>
+
+</body>
+</html>

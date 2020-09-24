@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let命令</title>
+    <script>
+        /**
+         * let命令
+         */
+        /*
+         * http://es6.ruanyifeng.com/#docs/let
+         *
+         * 用途：ES6新增了 let 命令，用来声明变量。
+         *       类似于var，但是所声明的变量，只在let命令所在的代码块内生效
+         *
+         * 特点： 1，只在代码块内生效
+         *        2，不存在变量提升
+         *        3，暂时性死区（在代码块内，使用let命令声明变量之前，该变量都是不可用的）
+         *        4，不允许重复声明（let不允许在相同作用域内，重复声明同一个变量）
+         */
+
+        /**
+         * ES6规定暂时性死区和let、const语句不出现变量提升  的意图
+         */
+        /*
+         * 主要是为了减少运行时错误，防止在变量声明前就使用这个变量，从而导致意料之外的行为。
+         */
+    </script>
+    <script>
+        //例1  表明let声明的变量只在它所在的代码块有效
+        {
+            let a = 10;
+            var b = 1
+        }
+        console.log(b);//1
+        //        console.log(a);//a is not defined
+
+        //例2  for循环的计数器，就很适合使用let命令
+        for (let i = 0; i < 10; i++) {//i只在for循环内有效
+        }
+        for (var j = 0; j < 10; j++) {
+        }
+        console.log(j);//10
+        //        console.log(i);//a is not defined
+
+        //例3
+        var arr1 = [];
+        for (var e = 0; e < 10; e++) {
+            arr1[e] = function () {
+                console.log(e);//10
+            }
+        }
+        arr1[6]();//10
+        var arr2 = [];
+        for (let f = 0; f < 10; f++) {
+            arr2[f] = function () {
+                console.log(f);
+            }
+        }
+        arr2[6]();//6
+
+        //例4  输出了3次abc，设置循环变量q的那部分是一个父作用域，而循环体内部q是一个单独的子作用域，不在同一个作用域
+        for (let q = 0; q < 3; q++) {
+            let q = "abc";
+            console.log(q);
+        }
+        //abc
+        //abc
+        //abc
+
+        //例5  let声明的变量不会变量提升
+        console.log(foo);//undefined  变量foo是var命令声明的，会发生变量提升，即脚本开始运行时，变量foo已经存在，但是没有值，所以会输出undefined
+        var foo = 2;
+
+        //console.log(bar);//bar is not defined  不会发生变量提升
+        let bar = 2;
+
+        //例5  暂时性死区  只要块级作用域内存在let命令，它所声明的变量就“绑定”这个区域，不再受外部的影响
+        var tmp = 123;
+        if (true) {
+            tmp = "abc";//tmp is not defined
+            console.log(tmp);//tmp is not defined
+            let tmp;//在let命令生命放变量tmp之前，都属于变量tmp的“死区”，只要使用到该变量就会报错
+            console.log(tmp);//undefined
+            tmp = 123;
+            console.log(tmp);//123
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

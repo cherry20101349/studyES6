@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * export default命令
+         */
+        /*
+         * 为模块指定默认输出，一个模块只能有一个默认输出
+         *
+         * 写法：
+         *     1，用在匿名函数前
+         *        export default function () {}
+         *     2，用在非匿名函数前
+         *        写法1：export default function foo() {}
+         *        写法2：function foo() {}
+         *               export default foo;
+         *
+         * 注意：正是因为export default命令其实只是输出一个叫做default的变量，所以它后面不能跟变量声明语句。
+         *       export var a = 1 //正确
+         *       var a = 1;export default a //正确
+         *       export default var a = 1 //错误
+         *
+         * export default也可以用来输出类。
+         */
+    </script>
+    <script>
+        // export-default.js  默认输出一个函数
+        export default function () {
+            console.log('foo');
+        }
+
+        // 其他模块加载该模块时，import命令可以为该匿名函数指定任意名字
+        import customName from './export-default';
+        customName();// 'foo'
+
+        // export default也可以用来输出类
+        // MyClass.js
+        export default class {}
+        // main.js
+        import MyClass from 'MyClass';
+        let o = new MyClass();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

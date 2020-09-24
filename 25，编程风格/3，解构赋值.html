@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="babel.min.js"></script>
+    <script>
+        /**
+         * 解构赋值
+         */
+        /*
+         * 1，使用数组成员对变量赋值时，优先使用解构赋值。
+         * 2，函数的参数如果是对象的成员，优先使用解构赋值。
+         */
+    </script>
+    <script type="text/babel">
+        /**
+         * 实例1
+         */
+        // 使用数组成员对变量赋值时，优先使用解构赋值
+        const arr = [1, 2, 3, 4];
+        // bad
+        const first = arr[0];
+        const second = arr[1];
+        // good
+        const [first1, second1] = arr;
+        console.log(first1);
+        console.log(second1);
+
+        /**
+         * 实例2
+         */
+        // 函数的参数如果是对象的成员，优先使用解构赋值
+        // bad
+        var user = {firstName: 'Wu', lastName: 'Ping'};
+        function getFullName(user) {
+            const firstName = user.firstName;
+            const lastName = user.lastName;
+        }
+        // good
+        function getFullName1(user) {
+            const { firstName, lastName } = user;
+        }
+        // best
+        function getFullName3({firstName, lastName}) {
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

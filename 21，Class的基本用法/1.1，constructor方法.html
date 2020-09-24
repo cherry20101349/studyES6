@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * constructor方法
+         */
+        /*
+         * 是类的默认方法，通过new命令生成对象实例时，自动调用该方法。
+         * 一个类必须有constructor方法，如果没有显示定义，一个空的constructor方法会被默认添加（Javascript引擎会自动添加）。
+         * 类必须使用new调用，否则会报错
+         */
+    </script>
+    <script>
+        //1.0 一个类必须有constructor方法，如果没有显示定义，一个空的constructor方法会被默认添加。
+        class Point {
+
+        }
+        class Point {//等同于
+            constructor() {
+            }
+        }
+
+        //类必须使用new调用，否则会报错
+        class Foo{
+            constructor(){
+                return Object.create(null);
+            }
+        }
+        Foo();//Uncaught SyntaxError: Identifier 'Point' has already been declared
+    </script>
+</head>
+<body>
+
+</body>
+</html>

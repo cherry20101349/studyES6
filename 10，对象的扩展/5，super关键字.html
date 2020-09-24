@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * super关键字
+         */
+        /*
+         * 我们知道，this关键字总是指向函数所在的当前对象，
+         * ES6 又新增了另一个类似的关键字super，指向当前对象的原型对象。
+         */
+    </script>
+    <script>
+        /**
+         * 实例1
+         */
+        const proto= {
+            foo: 'hello'
+        };
+        const obj = {
+            foo: 'world',
+            find() {
+                return super.foo;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * Set 实例的属性和方法
+         */
+        /*
+         * 属性：
+         *      1，Set.prototype.constructor  构造函数，默认就是Set函数
+         *      2，Set.prototype.size   返回Set实例的成员总数
+         * 方法：
+         *      操作方法(用于操作数据)：
+         *              1，Set.protoType.add(value)：添加某个值，返回Set构造本身
+         *              2，Set.protoType.delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+         *              3，Set.prototype.has(value)：返回一个布尔值，表示该值是否为Set成员
+         *              4，Set.prototype.clear()：清除所有成员，没有返回值
+         *      遍历方法(用于遍历成员)：
+         *              1，Set.prototype.keys()：返回键名的遍历器
+         *              2，Set.prototype.values()：返回键值的遍历器
+         *              3，Set.prototype.entries()：返回键值对的遍历器
+         *              4，Set.prototype.forEach()：使用回调函数遍历每个成员
+         */
+
+        /**
+         * 将Set结构转为数组
+         */
+        /*
+         * 使用Array.from方法
+         */
+    </script>
+    <script>
+        /**
+         * 去掉数组重复成员的另一种方法
+         */
+        function dedupe(array) {
+            return Array.from(new Set(array))
+        }
+        console.log(dedupe([1, 1, 2, 3]));// [1, 2, 3]
+    </script>
+    <script>
+        let s = new Set();
+        s.add(1).add(2).add(2);
+        console.log(s.size);// 2
+        console.log(s.has(1));// true
+        console.log(s.has(2));// true
+        console.log(s.has(3));// false
+        s.delete(2);
+        console.log(s.has(2));// false
+        s.clear();
+        console.log(s.has(1));// false
+
+        //将Set结构转为数组
+        let items = new Set([1, 2, 3, 4, 5, 5]);
+        console.log(items);
+        const array = Array.from(items);
+        console.log(array);// [1, 2, 3, 4, 5]
+
+
+        let set = new Set(['red', 'green', 'blue']);
+        console.log(set);
+        for (let item of set.keys()) {
+            console.log(item);// red green blue
+        }
+        for (let item of set.values()) {
+            console.log(item);// red green blue
+        }
+        for (let item of set.entries()) {
+            console.log(item);// ['red', 'red'] ['green', 'green'] ['blue', 'blue']
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

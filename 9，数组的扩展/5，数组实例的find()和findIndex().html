@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 数组实例的find()
+         */
+        /*
+         * find()用于找出第一个符合条件的数组成员。
+         * 参数：
+         *      参数1：是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。
+         *                             如果没有符合条件的成员，则返回undefined。
+         *                             参数1：当前的值
+         *                             参数2：当前的位置
+         *                             参数3：原数组
+         *      参数2：用来绑定回调函数的this对象。
+         */
+    </script>
+</head>
+<body>
+
+<script>
+    // 例子1
+    console.log([1, 4, -5, 10].find((n) => n < 0));// -5
+    // 例子2
+    const value = [1, 5, 10, 15].find(function(value, index, arr){
+        console.log(index);// 0 1 2
+        console.log(arr);// [1, 5, 10, 15] [1, 5, 10, 15] [1, 5, 10, 15]
+        return value > 9
+    });
+    console.log(value);// 10
+    // 例子3
+    function f(v){
+        return v > this.age
+    }
+    let person = {name: 'cherry',age: 20};
+    console.log([10, 12, 26, 15].find(f, person));// 26
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-1.11.3.min.js"></script>
+    <script>
+        /**
+         * ES6引入了模板字符串
+         */
+        /*
+         * 模板字符串(template string)是增强版的字符串，用反引号(`)表示。
+         * 它可以当做普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量
+         */
+    </script>
+    <script>
+        //普通字符串
+        console.log(`cherry`);//cherry
+
+        //多行字符串
+        console.log(`my name is
+                cherry
+                `);
+
+        //字符串中嵌入变量
+        let name = "cherry", time = "today";
+        console.log(`Hello ${name},how are you ${time}?`);//Hello cherry,how are you today?
+
+        //字符串中调用函数
+        function fn(){
+            return "Hello World";
+        }
+        console.log(`foo ${fn()} bar`);//foo Hello World bar
+
+        //字符串嵌套
+        const tmpl = addrs => `
+        <table>
+            ${addrs.map(addr => `
+                <tr><td>${addr.first}</td></tr>
+                <tr><td>${addr.last}</td></tr>
+            `).join('')}
+        </table>
+        `;
+    </script>
+</head>
+<body>
+
+<script>
+    //如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中，可以使用trim方法消除它。
+    $('body').html(`
+        <ul>
+            <li>first</li>
+            <li>second</li>
+        </ul>
+        `.trim());
+
+    //模板字符串中嵌入变量，需要将变量名写在${}之中。
+    function authorize(user, action) {
+        if (!user.hasPrivilege(action)) {
+            throw new Error(
+                    // 传统写法为
+                    // 'User '
+                    // + user.name
+                    // + ' is not authorized to do '
+                    // + action
+                    // + '.'
+                    `User ${user.name} is not authorized to do ${action}.`);
+        }
+    }
+
+    //大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性
+    let x = 1;
+    let y = 2;
+
+    `${x} + ${y} = ${x + y}`
+    // "1 + 2 = 3"
+    `${x} + ${y * 2} = ${x + y * 2}`
+    // "1 + 4 = 5"
+
+    let obj = {x: 1, y: 2};
+    `${obj.x + obj.y}`
+    // "3"
+
+</script>
+</body>
+</html>

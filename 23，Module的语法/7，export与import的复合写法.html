@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * export 与 import的复合写法
+         */
+        /*
+         * 如果在一个模块之中，先输入后输出同一个模块，import语句可以和export语句写在一起
+         */
+    </script>
+    <script>
+        import { foo, bar } from 'my_module';
+        export { foo, bar };
+        // 可以写成
+        export { foo, bar } from 'my_module';
+
+        // 接口改名
+        export { foo as myFoo } from 'my_module';
+
+        // 整体输出
+        export * from 'my_module';
+
+        // 默认接口的写法
+        export { default } from 'foo'
+
+        // 具名函数改为默认接口的写法
+        export { es6 as default } from './someModule'
+        // 等同于
+        import { es6 } from './someModule';
+        export default es6;
+
+        // 默认接口改名为具名接口
+        export { default as es6 } from './someModule'
+    </script>
+</head>
+<body>
+
+</body>
+</html>

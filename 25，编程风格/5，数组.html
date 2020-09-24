@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 数组
+         */
+        /*
+         * 1，使用扩展运算符（...）拷贝数组
+         * 2，使用Array.form方法，将类似数组的对象转化为数组。
+         */
+    </script>
+</head>
+<body>
+<div class="foo"></div>
+<div class="foo"></div>
+<div class="foo"></div>
+<script>
+    /**
+     * 实例1
+     */
+    // bad
+    const items = [1, 2, 3];
+    const len = items.length;
+    const itemsCopy = [];
+    for (let i = 0; i < len; i++) {
+        itemsCopy[i] = items[i]
+    }
+    console.log(itemsCopy); // [1, 2, 3]
+    // good
+    const itemsCopy1 = [...items
+    ]
+    console.log(itemsCopy1); // [1, 2, 3]
+
+    /**
+     * 实例2
+     */
+    const foo = document.querySelectorAll('.foo');
+    console.log(foo);
+    const nodes = Array.from(foo);
+    console.log(nodes);
+</script>
+</body>
+</html>

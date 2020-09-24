@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * import命令
+         */
+        /*
+         * 使用export命令定义了模块的对外接口以后，其他js文件就可以通过import命令加载这个模块。
+         *
+         * 使用方法：
+         *     import { firstName, lastName, year} from './profile.js';
+         *     import { firstName as name} from './profile.js';
+         *
+         * 注意：1，import命令输入的变量都是只读的，因为它的本质是输入接口。
+         *          也就是说，不允许在加载模块的脚本里面，改写接口。
+         *          但是，如果a是一个对象，改写a的属性是允许的。
+         *       2，import命令具有提升效果，会提升到整个模块的头部，首先执行。
+         *
+         * import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js后缀可以省略。
+         *       如果只是模块名，不带有路径，那么必须有配置文件，告诉JavaScript引擎该模块的位置。
+         *       import {myMethod} from 'util'
+         */
+    </script>
+    <script type="module">
+        // main.js
+        import { firstName, lastName, year} from './profile.js';
+        console.log(firstName);
+
+        // import命令输入的变量都是只读的
+        import {a} from './xxx.js'
+        a = {};// Syntax Error : 'a' is read-only;
+
+        // 但是，如果a是一个对象，改写a的属性是允许的。  不建议这样写
+        import {a} from './xxx.js'
+        a.foo = 'hello'
+
+        // import命令具有提升效果
+        foo();
+        import { foo } from 'my_module'
+    </script>
+</head>
+<body>
+
+</body>
+</html>

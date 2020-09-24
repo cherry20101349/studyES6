@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * Symbol.for()
+         */
+        /*
+         * 可以重新使用同一个Symbol值
+         *
+         * 注意：Symbol.for()为Symbol值登记的名字，是全局环境的，不管有没有全局环境运行。
+         */
+
+        /**
+         * Symbol.keyFor()
+         */
+        /*
+         * 返回一个已登记的Symbol类型值的key
+         *
+         */
+    </script>
+    <script>
+        let s1 = Symbol.for('foo');
+        let s2 = Symbol.for('foo');
+        console.log(s1 === s2);// true
+
+        let s3 = Symbol('bar');
+        let s4 = Symbol('bar');
+        console.log(s3 === s4);// false
+
+        let s5 = Symbol.for('foo');
+        console.log(Symbol.keyFor(s5));// foo
+        let s6 = Symbol('foo');
+        console.log(Symbol.keyFor(s6));// undefined
+
+        function foo() {
+            return Symbol.for('bar');
+        }
+        const x = foo();
+        const y = Symbol.for('bar');
+        console.log(x === y);// true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

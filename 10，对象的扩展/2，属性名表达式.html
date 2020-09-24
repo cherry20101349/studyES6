@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 属性名表达式
+         */
+    </script>
+    <script>
+        /**
+         * 实例1
+         */
+        let propKey = 'foo';
+        let obj = {
+            [propKey]: true,
+            ['a' + 'bc']: 123
+        };
+        console.log(obj);//{abc:123,foo:true}
+
+        /**
+         * 实例2
+         */
+        let lastWord = 'last word';
+        const a = {
+            'first word': 'hello',
+            [lastWord]: 'world'
+        };
+        console.log(a['first word']);//'hello'
+        console.log(a[lastWord]);//'world'
+        console.log(a['last word']);//'world'
+
+        /**
+         * 实例3
+         */
+        let obj1 = {
+            ['h' + 'ello']() {
+                return 'hi'
+            }
+        }
+        console.log(obj1.hello());//hi
+
+        /**
+         * 实例4
+         */
+        // 属性名表达式与简洁表示法，不能同时使用，会报错。
+        // 报错
+        //const foo = 'bar';
+        //const bar = 'abc';
+        //const baz = { [foo] }
+        // 正确
+        const foo = 'bar';
+        const baz = {[foo]: 'abc'};
+        console.log(baz);//{bar: 'abc'}
+
+        /**
+         * 实例5
+         */
+        //属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串[object Object]，这一点要特别小心。
+        const keyA = {a: 1};
+        const keyB = {b: 2};
+        const myObject = {
+            [keyA]: 'valueA',
+            [keyB]: 'valueB'
+        };
+        console.log(myObject);//{[object Object]: "valueB"}
+        //上面代码中，[keyA]和[keyB]得到的都是[object Object]，所以[keyB]会把[keyA]覆盖掉，而myObject最后只有一个[object Object]属性。
+    </script>
+</head>
+<body>
+
+</body>
+</html>

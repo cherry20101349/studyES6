@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * export 命令
+         */
+        /*
+         * 模块功能主要由两个命令构成：export 和 import。
+         * export命令用于规定模块的对外接口，
+         * import命令用于输入其他模块提供的功能。
+         *
+         * 一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。
+         * 如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。
+         *
+         * 三种写法：
+         *     写法一：export var m = 1
+         *             export function f() {}
+         *     写法二：var m = 1; export {m};
+         *             function f() {}
+         *             export {f};
+         *     写法三：var m = 1; export {m as n}
+         *
+         * export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。
+         */
+    </script>
+    <script>
+        // 第一种写法：export命令对外部输出三个变量
+        export var firstName = 'wu';
+        export var lastName = 'yaping';
+        export var year = '2020';
+
+        // 第二种写法(建议使用该写法，因为这样就可以在脚本尾部，一眼看清楚输出了哪些变量)
+        var firstName1 = 'wu';
+        var lastName1 = 'yaping';
+        var year1 = '2020';
+        export { firstName1, lastName1, year1 }
+
+        // export命令除了输出变量，还可以输出函数或类(class)
+        export function multiply(x, y) {// 对外输出一个函数multiply
+            return x * y
+        }
+
+        // 通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名
+        function a1(){}
+        function a2(){}
+        export {
+                a1 as streamA1,
+                a2 as streamA2,
+                a2 as streamLatestVersion,// 重命名后，a2可以用不同的名字输出两次。
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

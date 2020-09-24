@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 简介
+         */
+        /*
+         * 在JavaScript语言中，生成实例对象的传统方法是通过构造函数；但是这种写法跟传统的面向对象的语言（比如C++和Java）差异很大，让初学者感到困惑。
+         * ES6提供了更接近传统语言的写法，引入了Class(类)这个概念，作为对象的模板。通过Class关键字，可以定义类。
+         * 基本上，ES6的class可以看做只是一个语法糖，它的绝大部分功能，ES5都可以做到，
+         * 新的class写法只是让对象原型的写法更加清晰、更加面向对象编程的语法而已。
+         * 使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致
+         */
+    </script>
+    <script>
+        //1，生成实例对象的传统方法是通过构造函数
+        function Point(x, y) {
+            this.x = x;
+            this.y = y
+        }
+        Point.prototype.toString = function () {
+            return '(' + this.x + ', ' + this.y + ')';
+        };
+        var p = new Point(1, 2);
+
+        //2，上面的代码用 ES6 class的改写
+        class Point1 {
+            constructor(x, y) {//constructor方法就是构造方法
+                this.x = x;//this关键字则代表实例对象
+                this.y = y;
+            }
+
+            //方法之间不需要逗号分隔，加了会报错
+            toString() {
+                return '(' + this.x + ', ' + this.y + ')';
+            }
+        }
+        let point1 = new Point1();
+
+        //3，ES6的类，完全可以看做构造函数的另一种写法
+        class Point2 {
+            //...
+        }
+        console.log(typeof Point2);//function  类的数据类型就是函数
+        console.log(Point2 === Point2.prototype.constructor);//true  类本身就指向构造函数
+
+        //4，使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致
+        class Bar {
+            doStuff() {
+                console.log("stuff");
+            }
+        }
+        let b = new Bar();
+        b.doStuff();//"stuff"
+
+        //5，构造函数的prototype属性，在ES6的"类"上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面
+        class Point3 {
+            constructor() {
+                //...
+            }
+
+            toString() {
+                //...
+            }
+
+            toValue() {
+                //...
+            }
+        }
+        //等同于
+        Point3.prototype = {
+            constructor(){},
+            toString(){},
+            toValue(){}
+        };
+
+        //6，在类的实例上面调用方法，其实就是调用原型上的方法
+        class B {}
+        let b1 = new B();
+        console.log(b1.constructor === B.prototype.constructor);//true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

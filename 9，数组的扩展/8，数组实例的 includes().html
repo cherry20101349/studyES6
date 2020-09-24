@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * Array.prototype.includes()
+         */
+        /*
+         * 返回一个布尔值，表示某个数组是否包含给定的值。
+         * 参数：
+         *     第一个参数：给定的值。
+         *     第二个参数：搜索的起始位置，默认为0。
+         *                 若为负数，则表示倒数的位置。
+         *                 若第二个参数大于数组长度，则会重置为从0开始。
+         */
+    </script>
+</head>
+<body>
+
+<script>
+    console.log([1, 2, 3].includes(2));// true
+    console.log([1, 2, 3].includes(4));// false
+    console.log([1, 2, NaN].includes(NaN));// true
+    console.log([1, 2, 3].includes(3, 0));// true
+    console.log([1, 2, 3].includes(3, 1));// true
+    console.log([1, 2, 3].includes(3, 2));// true
+    console.log([1, 2, 3].includes(3, 3));// false
+    console.log([1, 2, 3].includes(3, -1));// true
+</script>
+</body>
+</html>

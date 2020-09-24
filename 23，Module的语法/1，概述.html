@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 概述
+         */
+        /*
+         * JavaScript一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。
+         */
+
+        /**
+         * 模块（module）
+         */
+        /*
+         * ES6模块不是对象，而是通过export命令显式指定输出的代码，再通过import命令输入。
+         */
+
+        /**
+         * ES6模块的好处
+         */
+        /*
+         * 1，静态加载（加载指定方法，其他方法不加载）
+         * 2，
+         * 3，
+         * 4，不需要对象作为命名空间（比如Math对象），未来这些功能可以通过模块提供。
+         */
+    </script>
+    <script>
+        // 从fs模块加载3个方法，其他方法不加载。这种加载称为“编译时加载”或静态加载。
+        import {start, exists, readFile} from 'fs'
+    </script>
+</head>
+<body>
+
+</body>
+</html>

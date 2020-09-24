@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * const命令
+         */
+        /*
+         * const声明一个只读的常量。
+         * 1，一旦声明，常量的值就不能改变，否则会报错。
+         * 2，一旦声明，就必须立即初始化，不能留到以后赋值。
+         * 3，const的作用域与let命令相同，只在声明所在的块级作用域内有效。
+         * 4，const声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。
+         * 5，const声明的常量，也与let一样不可重复声明
+         */
+    </script>
+    <script>
+        //例1：一旦声明，常量的值就不能改变，否则会报错
+        const PI = 3.1415;
+        PI
+        //PI = 3;//TypeError: Assignment to constant variable.
+
+        //例2：一旦声明，就必须立即初始化，不能留到以后赋值，只声明不赋值，就会报错
+        //const foo;//SyntaxError: Missing initializer in const declaration
+
+        //例3：只在声明所在的块级作用域内有效
+        if (true) {
+            const MAX = 5;
+        }
+        //console.log(MAX);//ReferenceError: MAX is not defined
+
+        //例4：const声明的常量也是不提升
+        if(true){
+            console.log(MAX);//ReferenceError: MAX is not defined
+            const MAX = 5;
+        }
+
+        //例5：const声明的常量，也与let一样不可重复声明
+        var message = "Hello!";
+        let age = 25;
+        //以下两行都会报错
+        const message = "goodbye";//SyntaxError: Identifier 'message' has already been declared
+        const age = 30;
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 一，ES6的块级作用域
+         */
+        /*
+         * let实际上为Javascript新增了块级作用域
+         *
+         * 1，外层代码块不受内层代码块的影响
+         * 2，ES6 允许块级作用域的任意嵌套
+         */
+
+        /**
+         * 二，块级作用域与函数声明
+         */
+        /*
+         * 注意：ES6的块级作用域必须有大括号，如果没有大括号，Javascript引擎就认为不存在块级作用域
+         */
+    </script>
+    <script>
+        //例1：外层代码块不受内层代码块的影响
+        function f1() {
+            let n = 5;
+            if (true) {
+                let n = 10;
+            }
+            console.log(n);//5  外层代码块不受内层代码块的影响
+        }
+        f1();
+
+        //例2：ES6 允许块级作用域的任意嵌套
+        {
+            {
+                {
+                    {
+                        {
+                            let issane = "Hello World"
+                        }
+                        //console.log(issane);//issane is not defined  每一层都是一个单独的作用域。第四层作用域无法读取第五层作用域的内部变量
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

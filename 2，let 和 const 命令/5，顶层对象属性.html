@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 顶层对象的属性
+         */
+        /*
+         * 顶层对象，在浏览器环境指的是window对象
+         *           在Node指的是global对象
+         */
+    </script>
+    <script>
+        //在ES5中，顶层对象的属性与全局变量是等价的
+        window.a = 1;
+        console.log(a);//1
+        a = 2;
+        console.log(window.a);//2
+
+        //在ES6中，用let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。
+        let b = 1;
+        console.log(window.b);//undefined
+    </script>
+</head>
+<body>
+
+</body>
+</html>

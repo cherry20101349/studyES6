@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 模块的整体加载
+         */
+        /*
+         * 除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有的输出值都加载在这个对象上面。
+         *
+         * 写法：
+         *      import * as circle from './circle'
+         */
+    </script>
+    <script>
+        // circle.js文件内容
+        export function area(radius){
+            return Math.PI * radius * radius;
+        }
+        export function circumference(radius){
+            return 2 * Math.PI * radius;
+        }
+
+        // 模块的整体加载
+        import * as circle from './circle';
+        console.log(`圆面积：${circle.area(4)}`);
+        console.log(`圆周长：${circle.circumference(14)}`);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

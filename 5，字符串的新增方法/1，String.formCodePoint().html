@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * String.fromCodePoint()方法
+         */
+        /*
+         * 用于从Unicode码点返回对应字符
+         */
+    </script>
+    <script>
+        //从Unicode码点返回对应字符
+        console.log(String.fromCodePoint(0x20BB7));//𠮷
+
+        //如果String.fromCodePoint方法有多个参数，则它们会被合并成一个字符串返回。
+        console.log(String.fromCodePoint(0x78, 0x1f680, 0x79) === 'x\uD83D\uDE80y');//true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

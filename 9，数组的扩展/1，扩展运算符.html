@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 扩展运算符
+         */
+        /*
+         * 扩展运算符（spread）是三个点（...）。
+         * 它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+         *
+         * console.log(...[1, 2, 3]);// 1 2 3
+         * console.log(1, ...[2, 3, 4], 5);// 1 2 3 4 5
+         * [...document.querySelectorAll('div')] // [<div>, <div>, <div>]
+         *
+         * 该运算符主要用于函数调用
+         *
+         * 扩展运算符与正常的函数参数可以结合使用，非常灵活。
+         * 扩展运算符后面还可以放置表达式。
+         * 如果扩展运算符后面是一个空数组，则不产生任何效果。
+         *
+         * 注意：只有函数调用时，扩展运算符才可以放在圆括号中，否则会报错。
+         */
+    </script>
+    <script>
+        /**
+         * 实例1
+         */
+        function add(x, y) {
+            return x + y;
+        }
+        const numbers = [4, 38];
+        console.log(add(...numbers));// 42
+
+        /**
+         * 实例2
+         */
+        function push(array, ...items) {
+            array.push(...items)
+        }
+        /**
+         * 实例3
+         */
+        // 扩展运算符与正常的函数参数可以结合使用，非常灵活
+        function f(v, w, x, y, z) {
+            console.log(v + w + x + y + z);
+        }
+        const args = [0, 1];
+        f(-1, ...args, 2, ...[3]); // 5
+
+        /**
+         * 实例4
+         */
+        // 扩展运算符后面还可以放置表达式
+        const x = 3;
+        const arr = [
+                ...(x > 0 ? ['a'] : []),
+                'b',
+        ];
+        console.log(arr); // ['a', 'b']
+
+        /**
+         * 实例5
+         */
+        // 如果扩展运算符后面是一个空数组，则不产生任何效果
+        const a = [...[], 1];
+        console.log(a); // [1]
+
+        /**
+         * 实例6
+         */
+        // 只有函数调用时，扩展运算符才可以放在圆括号中，否则会报错
+//        (...[1, 2]) // Uncaught SyntaxError: Unexpected token ...
+//        console.log((...[1,2])) // Uncaught SyntaxError: Unexpected token ...
+        console.log(...[1, 2]); // 1 2
+        // 上面三种情况，扩展运算符都放在圆括号里面，但是前两种情况会报错，因为扩展运算符所在的括号不是函数调用。
+    </script>
+</head>
+<body>
+
+</body>
+</html>

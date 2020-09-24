@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * raw()方法
+         */
+        /*
+         * 该方法返回一个斜杠都被转义（即斜杠前面再加一个斜杠）的字符串
+         * 往往用于模板字符串的处理方法
+         */
+    </script>
+    <script>
+        console.log(String.raw`Hi\n${2 + 3}!`);//Hi\n5!
+        console.log(String.raw`Hi\u000A!`);//Hi\u000A!
+
+        //如果原字符串的斜杠已经转义，那么String.raw()会进行再次转义。
+        console.log(String.raw`Hi\\n`);//Hi\\n
+        console.log(String.raw`Hi\\n` === "Hi\\\\n");//true
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

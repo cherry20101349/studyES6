@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 数值和布尔值的解构赋值
+         */
+        /*
+         * 解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。
+         */
+    </script>
+    <script>
+        let {toString: s1} = 123;
+        console.log(s1 === Number.prototype.toString);// true
+
+        let {toString: s2} = true;
+        console.log(s2 === Boolean.prototype.toString);// true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

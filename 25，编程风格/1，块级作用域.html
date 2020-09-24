@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 块级作用域
+         */
+        /*
+         * 1，let 替换 var
+         *    let只在其声明的代码块内有效，var做不到
+         *    var存在变量提升效用，let没有这个问题
+         *
+         * 2，全局变量和线程安全
+         *    在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。
+         *    const优于let有几个原因：
+         *        a：const可以提醒阅读程序的人，这个变量不应该改变。防止了无意间修改变量值所导致的错误.
+         *        b：const比较符合函数式编程思想，运算不改变值，只是新建值，而且这样也有利于将来分布式运算；
+         *        c：Javascript编辑器会对const进行优化。
+         *    所以多使用const，有利于提高程序的运行效率，也就是说let和const的本质区别，其实是编辑器内部的处理不同。
+         *    多有的函数都应该设置为常量。
+         *
+         *    长远来看，Javascript可能会有多线程的实现，这时let表示的变量，只应出现在单线程运行的代码中，不能是多线程共享的，这样有利于保证线程安全。
+         */
+    </script>
+    <script>
+        /**
+         * 实例1
+         */
+        // bad
+        var a = 1, b = 2, c = 3;
+        // good
+        const a1 = 1;
+        const b1 = 2;
+        const c1 = 3;
+        // best
+        const [a2, b2, c2] = [1, 2, 3]
+    </script>
+</head>
+<body>
+
+</body>
+</html>

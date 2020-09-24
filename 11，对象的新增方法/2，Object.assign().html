@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * Object.assign()
+         */
+        /*
+         * 用于对象的合并，将源对象(sourse)的所有可枚举属性，复制到目标对象(target)。
+         * 参数：
+         *      参数1：目标对象
+         *      参数2：源对象
+         *       ...
+         *      参数n：源对象
+         */
+
+        /**
+         * 常见用途
+         */
+        /*
+         * 1，为对象添加属性
+         * 2，为对象添加方法
+         * 3，克隆对象(只克隆原始对象自身的值，不克隆它继承的值)
+         * 4，合并多个对象(将多个对象合并到某个对象)
+         * 5，为属性指定默认值
+         */
+    </script>
+</head>
+<body>
+
+
+<script>
+    const target = {a: 1};
+    const sourse1 = {b: 2};
+    const sourse2 = {c: 3};
+    Object.assign(target, sourse1, sourse2);
+    console.log(target);// {a: 1, b: 2, c: 3}
+
+    // 只有一个参数，直接返回该参数
+    const obj = {a: 1};
+    Object.assign(obj);
+    console.log(obj);// {a: 1}
+
+    // 若该参数不是对象，则会先转成对象，然后返回。由于undefined 和 null 无法转成对象，则若他们为首参数，就会报错。
+    console.log(typeof Object.assign(2));// object
+    let obj1 = {a: 1};
+    console.log(Object.assign(obj1, null) === obj1);// true
+    console.log(Object.assign(obj1, undefined) === obj1);// true
+
+
+    // 为对象添加属性
+    function Point(x, y) {
+        Object.assign(this, {x, y});
+        console.log(this.x);// 1
+        console.log(this.y);// 2
+    }
+    new Point(1, 2);
+
+    // 为对象添加方法
+    new SomeClass();
+    function SomeClass() {
+    }
+    Object.assign(SomeClass.prototype, {
+        someMethod(){
+            console.log(1)
+        },
+        anotherMethod(){
+            console.log(2)
+        }
+    });
+    console.log(SomeClass.prototype);
+    // 等同于下面的写法
+    SomeClass.prototype.someMethod = function () {
+        console.log(1)
+    };
+    SomeClass.prototype.anotherMethod = function () {
+        console.log(2)
+    };
+
+    // 克隆对象(只克隆原始对象自身的值，不克隆它继承的值)
+    function clone(origin) {
+        return Object.assign({}, origin)
+    }
+    console.log(clone({a: 1}));// {a: 1}
+    // 如果想要保持继承链，可以采用下面的代码
+    function clone2(origin) {
+        let originProto = Object.getPrototypeOf(origin);
+        return Object.assign(Object.create(originProto), origin)
+    }
+</script>
+</body>
+</html>

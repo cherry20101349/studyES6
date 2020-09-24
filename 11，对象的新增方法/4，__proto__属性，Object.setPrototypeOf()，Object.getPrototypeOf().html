@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * __proto__属性
+         */
+        /*
+         * 用来读取或设置当前对象的原型对象(prototype)
+         * 它本质上是一个内部属性，而不是一个正式的对外的API，只是由于浏览器广泛支持，才被加入了ES6。
+         * 建议都不要使用这个属性。
+         * 而是使用如下代替：
+         *        Object.setPrototypeOf()   写操作
+         *        Object.getPrototypeOf()   读操作
+         *        Object.create()           生成操作
+         */
+
+        /**
+         * Object.setPrototypeOf()
+         */
+        /*
+         * 作用与__proto__相同，用来设置一个对象的原型对象(prototype)
+         * 格式：Object.setPrototypeOf(object, prototype)
+         */
+    </script>
+</head>
+<body>
+
+<script>
+    // 该方法等同于下面的函数
+    function setPrototypeOf(obj, proto) {
+        obj.__proto__ = proto;
+        return obj;
+    }
+
+    // 例子
+    let proto = {};
+    let obj = {x: 10};
+    Object.setPrototypeOf(obj, proto);
+    proto.y = 20;
+    proto.x = 40;
+    console.log(obj.x);// 10
+    console.log(obj.y);// 20
+    console.log(obj.z);// 40
+</script>
+</body>
+</html>

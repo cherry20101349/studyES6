@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * import()
+         */
+        /*
+         * import()函数，支持动态加载模块
+         *
+         * import(specifier)  参数specifier，指定所要加载模块的位置。
+         *                    什么时候运行到这句，就会加载指定的模块
+         */
+
+        /**
+         * 适合场合
+         */
+        /*
+         * 1，按需加载  在需要的时候，再加载某个模块
+         * 2，条件加载  可以放在if代码块，根据不同的情况，加载不同的模块
+         * 3，动态的模块路径  允许模块路径动态生成
+         */
+
+        /**
+         * 注意
+         */
+        /*
+         * import()加载模块成功后，这个模块会作为一个对象，当做then方法的参数。
+         * 因此可以使用对象解构赋值的语法，获取输出接口。
+         */
+    </script>
+    <script>
+        // 按需加载  点击了按钮才会加载这个模块
+        button.addEventListener('click', event = > {
+            import('./dialogBox.js'
+        )
+        .then(dialogBox = > {
+            dialogBox.open()
+        })
+        .catch(error = > {}
+        )
+        })
+
+        // 条件加载  如果满足条件，就加载模块A，否则就加载模块B
+        if (condition) {
+        import
+            ('moduleA').then()
+        } else {
+        import
+            ('moduleB').then()
+        }
+
+        // 动态的模块路径  根据函数f的返回结果，加载不同的模块
+        import
+        (f()).then();
+
+        // 加载模块成功以后
+        // export1 和 export2都是myModule.js的输出接口，可以解构获得。
+        import('./myModule.js')
+                .then(({export1, export2}) => {
+
+        })
+
+        // 模块有default输出接口，可以用参数直接获得
+        import('./myModule.js')
+                .then((myModule) => {
+            consoel.log(myModule.default)
+        })
+
+        // 上面的代码也可以使用具名输入的形式。
+        import('./myModule.js')
+                .then(({default: theDefault) => {
+            consoel.log(theDefault)
+        })
+
+        // 如果想同时加载多个模块
+        Promise.all([
+            import('./myModule1.js'),
+            import('./myModule2.js'),
+            import('./myModule3.js'),
+        ])
+        .then(([module1, module2, module3]) => {})
+
+        // import()也可以用在 async 函数之中。
+        async function main() {
+            const myModule = await import('./myModule.js');
+            const {export1, export2} = await import('./myModule.js');
+            const [module1, module2, module3] =
+                    await Promise.all([
+            import('./module1.js'),
+            import('./module2.js'),
+            import('./module3.js'),
+        ]);
+        }
+        main();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

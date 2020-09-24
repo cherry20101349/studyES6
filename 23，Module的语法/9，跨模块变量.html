@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 跨模块变量
+         */
+        /*
+         * const声明的常量只在当前代码块有效。如果想设置跨模块的常量（即跨多个文件），或者说一个值要被多个模块共享，可以采用下面的写法。
+         *
+         * 如果要使用的变量非常多，可以建一个专门的constants目录，将各种常量写在不同的文件里面，保存在该目录下。
+         */
+    </script>
+    <script>
+        // ============跨模块变量============
+        // constants.js 模块
+        export const A = 1;
+        export const B = 2;
+        export const C = 3;
+        // test1.js 模块
+        import * as constants from './constants';
+        console.log(constants.A);// 1
+        console.log(constants.B);// 2
+        // test2.js 模块
+        import { A, B } from './constants';
+        console.log(A);// 1
+        console.log(B);// 2
+
+
+        // ============如果要使用的变量非常多============
+        // constants/db.js
+        export const db = {
+            url: '111',
+            userName: 'cherry',
+            password: 'cherry password'
+        };
+        // constants/user.js
+        export const users = ['root', 'admin', 'develop', 'cherry'];
+        // 然后讲这些文件输出的常量合并在index.js里面
+        // constants/index.js
+        export {db} from './db';
+        export {users} from './users'
+        // 使用的时候，直接加载index.js就可以了
+        // script.js
+        import { db, users } from './constants/index.js'
+    </script>
+</head>
+<body>
+
+</body>
+</html>

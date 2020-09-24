@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 为什么ES6要引用Symbol
+         */
+        /*
+         * ES5的对象属性名都是字符串，这容易造成属性名的冲突。
+         * 比如你使用了一个他人提供的对象，但是又想为这个对象添加新的方法(mixin模式)，新方法的名字就有可能与现有方法产生冲突。
+         * 如果有种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是ES6引用Symbol的原因。
+         */
+
+        /**
+         *  Symbol
+         */
+        /*
+         * Symbol可以通过Symbol函数生成。
+         *
+         * Symbol函数可以接受一个字符串作为参数，表示对Symbol实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。
+         *           若传的是一个对象，就会调用该对象的toString方法，将其转为字符串，然后才生成一个Symbol值。
+         */
+
+        /**
+         * 注意
+         */
+        /*
+         * Symbol函数前不能使用new 命令，否则会报错。
+         * 因为生成的Symbol是一个原始类型的值，不是对象。
+         * 也就是说，由于Symbol值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。
+         *
+         * Symbol值不能与其他类型的值进行运算，会报错（但是Symbol值可以显示转为字符串，也可以转为布尔值，但是不能转为数值）。
+         */
+    </script>
+
+    <script>
+        let s = Symbol();
+        console.log(s);// Symbol()
+        console.log(typeof s);// symbol
+        let a = Symbol('a');
+        console.log(a);// Symbol(a)
+        console.log(typeof a);// symbol
+        let b = Symbol();
+        console.log(b);// Symbol()
+        console.log(s === b);// false
+        console.log(b.toString());// 'Symbol()'
+        console.log(Boolean(b));// true
+        console.log(!b);// false
+        console.log(b + '1111');// 报错
+        console.log(Number(b));// 报错
+    </script>
+</head>
+<body>
+
+</body>
+</html>

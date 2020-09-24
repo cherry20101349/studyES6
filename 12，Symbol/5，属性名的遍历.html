@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 属性名的遍历
+         */
+        /*
+         * Symbol作为属性名，遍历对象的时候，改属性不会出现在for...in、for...of循环中，
+         * 也不会被Object.keys、Object.getOwnPropertyNames()、JSON.stringfy()返回。
+         *
+         * 但是，它也不是私有属性，有一个Object.getOwnPropertySymbols()方法，可以获取指定对象的所有Symbol属性名。
+         * 该方法返回一个数组，成员是当前对象的所有用作属性名的Symbol值。
+         */
+
+        /**
+         * 返回所有类型的键名
+         */
+        /*
+         * Reflect.ownKeys()方法可以返回所有类型的键名，包括常规键名和Symbol键名。
+         */
+    </script>
+    <script>
+        const obj = {};
+        let a = Symbol('a');
+        let b = Symbol('b');
+        obj[a] = 'hello';
+        obj[b] = 'world';
+        for (let i in obj) {
+            console.log(i);// 无输出
+        }
+        console.log(Object.getOwnPropertyNames(obj));// []
+        console.log(Object.getOwnPropertySymbols(obj));// [Symbol(a), Symbol(b)]
+
+        // 返回所有类型的键名
+        let obj1 = {
+            [Symbol('my_key')]: 1,
+            enum: 2,
+            nonEnum: 3
+        };
+        console.log(Reflect.ownKeys(obj1));// ["enum", "nonEnum", Symbol(my_key)]
+    </script>
+</head>
+<body>
+
+</body>
+</html>

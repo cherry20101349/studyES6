@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         *  浏览器加载
+         */
+        /*
+         * 传统方法：HTML网页中，浏览器通过<script>标签加载JavaScript脚本。
+         *
+         * 默认情况下，浏览器是【同步】加载JavaScript脚本，即渲染引擎遇到<script>标签就会停下来，等到执行完脚本，再继续向下渲染。
+         *            如果是外部脚本，还必须加入脚本下载的时间。
+         * 两种异步加载的语法：(<script>标签打开defer或async属性，脚本就会异步加载。渲染引擎遇到这一行命令，就会下载外部脚本，但是不会等它下载和执行，而是直接执行后面的命令)
+         *        <script src="path/to/myModule.js" defer>
+         *        <script src="path/to/myModule.js" async>
+         */
+
+        /**
+         * defer 和 async 的区别
+         */
+        /*
+         * defer：渲染完再执行
+         * async：下载完就执行
+         *
+         * 如果有多个defer脚本，会按照它们在页面出现的顺序加载。
+         * 如果有多个async脚本，则不能保证加载顺序。
+         */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
