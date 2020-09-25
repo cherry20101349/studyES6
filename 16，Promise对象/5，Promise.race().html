@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * Promise.race()
+         */
+        /*
+         * 同样是将多个Promise实例，包装成一个新的Promise实例。
+         * const p = Promise.race([p1, p2, p3])
+         */
+
+        /**
+         * 状态
+         */
+        /*
+         * 只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。
+         * 那个率先改变的Promise实例的返回值，就传递给p的回调函数。
+         */
+    </script>
+</head>
+<body>
+
+<script>
+    // 如果指定时间内没有获得结果，就将Promise的状态变为reject，否则就变为resolve
+    // 如果5s之内fetch方法无法返回结果，变量p的状态就会变为rejected，从而触发catch方法指定的回调函数。
+    const p = Promise.race([
+        fetch('/resource-that-may-take-a-while'),
+        new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                return reject(new Error('request timeout'))
+            }, 5000)
+        })
+    ]);
+    p.then(console.log).catch(console.error)
+</script>
+</body>
+</html>
